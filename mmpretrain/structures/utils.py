@@ -120,11 +120,8 @@ def batch_label_to_onehot(batch_label, split_indices, num_classes):
                 [1, 0, 1, 0, 1],
                 [0, 1, 0, 1, 0]])
     """
-    sparse_onehot_list = F.one_hot(batch_label, num_classes)
-    onehot_list = [
-        sparse_onehot.sum(0)
-        for sparse_onehot in tensor_split(sparse_onehot_list, split_indices)
-    ]
+    # sparse_onehot_list = F.one_hot(batch_label, num_classes)
+    onehot_list = tensor_split(batch_label, split_indices)
     return torch.stack(onehot_list)
 
 

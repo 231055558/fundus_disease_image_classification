@@ -4,7 +4,7 @@ _base_ = [
     '../_base_/schedules/imagenet_bs256.py',
     '../_base_/default_runtime.py',
 ]
-model = dict(head=dict(type='MultiLabelLinearClsHead', thr=0.125, num_classes=8, loss=dict(use_sigmoid=True)))
+model = dict(backbone=dict(init_cfg=dict(type='Pretrained', checkpoint='/mnt/mydisk/medical_seg/fwwb_a007/checkpoints/efficientnetv2-b0_3rdparty_in1k_20221221-9ef6e736.pth')), head=dict(type='MultiLabelLinearClsHead', thr=0.5, num_classes=8, loss=dict(use_sigmoid=True)))
 
 # dataset settings
 dataset_type = 'ImageNet'

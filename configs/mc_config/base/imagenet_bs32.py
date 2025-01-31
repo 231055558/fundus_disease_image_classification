@@ -28,8 +28,8 @@ train_dataloader = dict(
     num_workers=5,
     dataset=dict(
         type=dataset_type,
-        data_root='../data/',
-        ann_file='/mnt/mydisk/medical_seg/fwwb_a007/data/data_label.txt',
+        data_root='../data/training_data',
+        ann_file='/mnt/mydisk/medical_seg/fwwb_a007/data/training_data/train.txt',
         split='train',
         pipeline=train_pipeline),
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -40,9 +40,9 @@ val_dataloader = dict(
     num_workers=5,
     dataset=dict(
         type=dataset_type,
-        data_root='../data/',
-        ann_file='/mnt/mydisk/medical_seg/fwwb_a007/data/data_label.txt',
-        split='train',
+        data_root='../data/training_data',
+        ann_file='/mnt/mydisk/medical_seg/fwwb_a007/data/training_data/val.txt',
+        split='val',
         pipeline=test_pipeline),
     sampler=dict(type='DefaultSampler', shuffle=False),
 )

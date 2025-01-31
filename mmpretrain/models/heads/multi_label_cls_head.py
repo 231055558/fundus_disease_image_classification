@@ -93,7 +93,9 @@ class MultiLabelClsHead(BaseModule):
         num_classes = cls_score.size()[-1]
         # Unpack data samples and pack targets
         if 'gt_score' in data_samples[0]:
-            target = torch.stack([i.gt_score.float() for i in data_samples])
+            target = torch.stack([
+                i.gt_label for i in data_samples
+            ]).float()
         else:
             target = torch.stack([
                 i.gt_label for i in data_samples
